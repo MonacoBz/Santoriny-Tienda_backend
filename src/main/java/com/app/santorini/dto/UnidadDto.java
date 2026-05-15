@@ -1,19 +1,18 @@
 package com.app.santorini.dto;
 
-
-import com.app.santorini.entity.Categoria;
+import com.app.santorini.entity.Unidad;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Positive;
 
-public record CategoriaDto(
-        @Positive(message = "El id debe ser positivo")
+public record UnidadDto(
+        @Positive(message = "El id debe ser positivo.")
         Long id,
         @NotEmpty
-        @Pattern(regexp = "[A-Z]+",message = "El nombre debe estar en mayuscula")
+        @Pattern(regexp = "[A-Z]+", message = "El nombre debe ser en mayusculas.")
         String nombre
 ) {
-    public CategoriaDto(Categoria entity){
+    public UnidadDto(Unidad entity){
         this(entity.getId(),
                 entity.getNombre());
     }

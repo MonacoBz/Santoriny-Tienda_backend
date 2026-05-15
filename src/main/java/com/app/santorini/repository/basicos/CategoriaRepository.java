@@ -1,4 +1,4 @@
-package com.app.santorini.repository;
+package com.app.santorini.repository.basicos;
 
 import com.app.santorini.entity.Categoria;
 import org.springframework.data.jpa.repository.JpaRepository;

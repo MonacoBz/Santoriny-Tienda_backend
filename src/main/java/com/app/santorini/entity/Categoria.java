@@ -20,6 +20,7 @@ public class Categoria {
     @SequenceGenerator(name = "categoria_sequence",sequenceName = "categoria_id_seq", allocationSize = 1)
     private Long id;
 
+    @Column(unique = true)
     private String nombre;
 
     public Categoria(CategoriaDto categoriaDto){
