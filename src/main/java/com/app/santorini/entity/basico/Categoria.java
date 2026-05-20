@@ -1,6 +1,6 @@
-package com.app.santorini.entity;
+package com.app.santorini.entity.basico;
 
-import com.app.santorini.dto.CategoriaDto;
+import com.app.santorini.dto.basico.CategoriaDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,6 +18,7 @@ public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "categoria_sequence")
     @SequenceGenerator(name = "categoria_sequence",sequenceName = "categoria_id_seq", allocationSize = 1)
+    @Column(name = "id_categoria")
     private Long id;
 
     @Column(unique = true)
