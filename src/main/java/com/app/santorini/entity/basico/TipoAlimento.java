@@ -1,6 +1,6 @@
-package com.app.santorini.entity;
+package com.app.santorini.entity.basico;
 
-import com.app.santorini.dto.TipoAlimentoDto;
+import com.app.santorini.dto.basico.TipoAlimentoDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,11 +12,13 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "tipo_alimento")
 public class TipoAlimento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tipoalimento_seq")
-    @SequenceGenerator(name = "tipoalimento_seq", sequenceName = "tipo_alimento_db" , initialValue = 1)
+    @SequenceGenerator(name = "tipoalimento_seq", sequenceName = "tipo_alimento_id" , allocationSize = 1)
+    @Column(name = "id_tipo_alimento")
     private Long id;
 
     @Column(unique = true)

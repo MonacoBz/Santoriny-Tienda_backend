@@ -1,6 +1,6 @@
-package com.app.santorini.dto;
+package com.app.santorini.dto.basico;
 
-import com.app.santorini.entity.Unidad;
+import com.app.santorini.entity.basico.Unidad;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Positive;

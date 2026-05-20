@@ -1,6 +1,6 @@
-package com.app.santorini.entity;
+package com.app.santorini.entity.basico;
 
-import com.app.santorini.dto.UnidadDto;
+import com.app.santorini.dto.basico.UnidadDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,6 +18,7 @@ public class Unidad {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "unidad_seq")
     @SequenceGenerator(name = "unidad_seq", sequenceName = "unidad_seq_db", initialValue = 1)
+    @Column(name = "id_unidad")
     private Long id;
 
     @Column(unique = true)

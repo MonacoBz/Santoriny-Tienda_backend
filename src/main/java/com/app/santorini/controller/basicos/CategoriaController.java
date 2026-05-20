@@ -1,7 +1,7 @@
-package com.app.santorini.controller;
+package com.app.santorini.controller.basicos;
 
-import com.app.santorini.dto.UnidadDto;
-import com.app.santorini.service.UnidadService;
+import com.app.santorini.dto.basico.CategoriaDto;
+import com.app.santorini.service.basicos.CategoriaService;
 import com.app.santorini.service.basicos.ServiceB;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,31 +11,33 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/unidad")
+@RequestMapping("/api/categoria")
 @Validated
-public class UnidadController {
+public class CategoriaController {
 
-    private final ServiceB<UnidadDto> service;
-
-    public UnidadController(UnidadService service){
+    private final ServiceB<CategoriaDto> service;
+    public CategoriaController(CategoriaService service){
         this.service = service;
     }
 
     @GetMapping
-    public ResponseEntity<List<UnidadDto>> getUnidad(){
+    public ResponseEntity<List<CategoriaDto>> getCategoria(){
         return ResponseEntity.ok(service.getAll());
     }
 
     @PostMapping("/create")
-    public ResponseEntity createUnidad(@RequestBody UnidadDto entity){
+    public ResponseEntity createCategoria(@RequestBody  CategoriaDto entity){
         service.create(entity);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .build();
     }
 
     @PostMapping("/update")
-    public ResponseEntity updateUnidad(@RequestBody UnidadDto entity){
+    public ResponseEntity updateCategoria(@RequestBody CategoriaDto entity){
         service.update(entity);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.status(HttpStatus.OK)
+                .build();
     }
+
+
 }

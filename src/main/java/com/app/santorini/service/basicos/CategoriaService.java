@@ -1,10 +1,9 @@
-package com.app.santorini.service;
+package com.app.santorini.service.basicos;
 
-import com.app.santorini.dto.CategoriaDto;
-import com.app.santorini.entity.Categoria;
+import com.app.santorini.dto.basico.CategoriaDto;
+import com.app.santorini.entity.basico.Categoria;
 import com.app.santorini.exceptions.BasicoException;
 import com.app.santorini.repository.basicos.CategoriaRepository;
-import com.app.santorini.service.basicos.ServiceB;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

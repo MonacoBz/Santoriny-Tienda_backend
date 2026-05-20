@@ -1,10 +1,9 @@
-package com.app.santorini.service;
+package com.app.santorini.service.basicos;
 
-import com.app.santorini.dto.UnidadDto;
-import com.app.santorini.entity.Unidad;
+import com.app.santorini.dto.basico.UnidadDto;
+import com.app.santorini.entity.basico.Unidad;
 import com.app.santorini.exceptions.BasicoException;
-import com.app.santorini.repository.UnidadRepository;
-import com.app.santorini.service.basicos.ServiceB;
+import com.app.santorini.repository.principales.UnidadRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
