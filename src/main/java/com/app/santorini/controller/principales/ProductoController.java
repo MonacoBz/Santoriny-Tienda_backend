@@ -1,7 +1,7 @@
 package com.app.santorini.controller.principales;
 
-import com.app.santorini.dto.principales.ProductoRequestDto;
-import com.app.santorini.dto.principales.ProductoResponseDto;
+import com.app.santorini.dto.principales.producto.ProductoRequestDto;
+import com.app.santorini.dto.principales.producto.ProductoResponseDto;
 import com.app.santorini.service.principales.ProductoService;
 import com.app.santorini.service.principales.ServiceI;
 import org.springframework.http.HttpStatus;
@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/productos")
+@CrossOrigin(origins = {"http://127.0.0.1:5500"})
 public class ProductoController {
 
     private final ServiceI<ProductoResponseDto, ProductoRequestDto> service;

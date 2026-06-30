@@ -3,7 +3,7 @@ package com.app.santorini.service.basicos;
 import com.app.santorini.dto.basico.UnidadDto;
 import com.app.santorini.entity.basico.Unidad;
 import com.app.santorini.exceptions.BasicoException;
-import com.app.santorini.repository.principales.UnidadRepository;
+import com.app.santorini.repository.basicos.UnidadRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

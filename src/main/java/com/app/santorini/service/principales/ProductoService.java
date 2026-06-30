@@ -1,12 +1,13 @@
 package com.app.santorini.service.principales;
 
-import com.app.santorini.dto.principales.ProductoRequestDto;
-import com.app.santorini.dto.principales.ProductoResponseDto;
+import com.app.santorini.dto.principales.producto.ProductoRequestDto;
+import com.app.santorini.dto.principales.producto.ProductoResponseDto;
 import com.app.santorini.entity.principales.Producto;
 import com.app.santorini.exceptions.BasicoException;
 import com.app.santorini.exceptions.ProductoException;
 import com.app.santorini.repository.basicos.CategoriaRepository;
 import com.app.santorini.repository.basicos.TipoAlimentoRepository;
+import com.app.santorini.repository.basicos.UnidadRepository;
 import com.app.santorini.repository.principales.ProductoRepository;
 import org.springframework.stereotype.Service;
 
@@ -20,14 +21,18 @@ public class ProductoService implements ServiceI<ProductoResponseDto, ProductoRe
     private final CategoriaRepository repositoryCategoria;
 
     private final TipoAlimentoRepository repositoryAlimento;
+    
+    private final UnidadRepository repositoryUnidad;
     public ProductoService(
             ProductoRepository repository,
             CategoriaRepository repositoryCategoria,
-            TipoAlimentoRepository repositoryAlimento
+            TipoAlimentoRepository repositoryAlimento,
+            UnidadRepository repositoryUnidad
     ){
         this.repository = repository;
         this.repositoryCategoria = repositoryCategoria;
         this.repositoryAlimento = repositoryAlimento;
+        this.repositoryUnidad = repositoryUnidad;
     }
 
 
@@ -38,8 +43,12 @@ public class ProductoService implements ServiceI<ProductoResponseDto, ProductoRe
 
         var alimento = repositoryAlimento.findById(entity.id_tipoAlimento())
                 .orElseThrow(()->new BasicoException("No existe la categoria con el id " + entity.id_tipoAlimento()));
+        
+        var unidad = repositoryUnidad.findById(entity.id_unidad())
+                .orElseThrow(()->new BasicoException("No existe la unidad con el id " + entity.id_unidad()));
 
-        var producto = new Producto(entity,categoria,alimento);
+        var producto = new Producto(entity,categoria,alimento,unidad);
+
         try{
             repository.save(producto);
         }catch (Exception e){
@@ -66,7 +75,10 @@ public class ProductoService implements ServiceI<ProductoResponseDto, ProductoRe
         var producto = repository.findById(entity.id())
                         .orElseThrow(()->new ProductoException("No existe el producto con el id : " + entity.id()));
 
-        producto.actualiza(entity,categoria,alimento);
+        var unidad = repositoryUnidad.findById(entity.id_unidad())
+                .orElseThrow(()->new BasicoException("No existe la unidad con el id " + entity.id_unidad()));
+
+        producto.actualiza(entity,categoria,alimento,unidad);
         repository.save(producto);
     }
 

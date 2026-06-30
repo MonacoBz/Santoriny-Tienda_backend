@@ -1,8 +1,9 @@
 package com.app.santorini.entity.principales;
 
-import com.app.santorini.dto.principales.ProductoRequestDto;
+import com.app.santorini.dto.principales.producto.ProductoRequestDto;
 import com.app.santorini.entity.basico.Categoria;
 import com.app.santorini.entity.basico.TipoAlimento;
+import com.app.santorini.entity.basico.Unidad;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -38,20 +39,25 @@ public class Producto {
     @JoinColumn(name = "id_tipo_alimento")
     private TipoAlimento tipoAlimento;
 
-    public Producto(ProductoRequestDto entity, Categoria categoria, TipoAlimento tipoAlimento){
-        this.asignaDatos(entity,categoria,tipoAlimento);
+    @ManyToOne
+    @JoinColumn(name = "id_unidad")
+    private Unidad unidad;
+
+    public Producto(ProductoRequestDto entity, Categoria categoria, TipoAlimento tipoAlimento, Unidad unidad){
+        this.asignaDatos(entity,categoria,tipoAlimento,unidad);
     }
 
-    public void actualiza(ProductoRequestDto entity, Categoria categoria, TipoAlimento tipoAlimento) {
-        this.asignaDatos(entity,categoria,tipoAlimento);
+    public void actualiza(ProductoRequestDto entity, Categoria categoria, TipoAlimento tipoAlimento, Unidad unidad) {
+        this.asignaDatos(entity,categoria,tipoAlimento,unidad);
     }
 
-    private void asignaDatos(ProductoRequestDto entity, Categoria categoria , TipoAlimento tipoAlimento){
+    private void asignaDatos(ProductoRequestDto entity, Categoria categoria , TipoAlimento tipoAlimento,Unidad unidad){
         this.id = entity.id();
         this.nombre = entity.nombre();
         this.precio_x_unidad = entity.precio_x_unidad();
         this.activo = entity.activo();
         this.setCategoria(categoria);
         this.setTipoAlimento(tipoAlimento);
+        this.unidad = unidad;
     }
 }

@@ -1,4 +1,4 @@
-package com.app.santorini.dto.principales;
+package com.app.santorini.dto.principales.producto;
 
 import java.math.BigDecimal;
 
@@ -8,6 +8,7 @@ public record ProductoRequestDto(
         BigDecimal precio_x_unidad,
         boolean activo,
         long id_categoria,
-        long id_tipoAlimento
+        long id_tipoAlimento,
+        long id_unidad
 ) {
 }

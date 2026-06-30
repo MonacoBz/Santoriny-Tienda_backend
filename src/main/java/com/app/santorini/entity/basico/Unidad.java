@@ -17,7 +17,7 @@ public class Unidad {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "unidad_seq")
-    @SequenceGenerator(name = "unidad_seq", sequenceName = "unidad_seq_db", initialValue = 1)
+    @SequenceGenerator(name = "unidad_seq", sequenceName = "unidad_seq_db", allocationSize = 1)
     @Column(name = "id_unidad")
     private Long id;
 

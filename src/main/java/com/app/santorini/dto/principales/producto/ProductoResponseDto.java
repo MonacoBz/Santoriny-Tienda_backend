@@ -1,7 +1,8 @@
-package com.app.santorini.dto.principales;
+package com.app.santorini.dto.principales.producto;
 
 import com.app.santorini.dto.basico.CategoriaDto;
 import com.app.santorini.dto.basico.TipoAlimentoDto;
+import com.app.santorini.dto.basico.UnidadDto;
 import com.app.santorini.entity.principales.Producto;
 
 import java.math.BigDecimal;
@@ -11,8 +12,9 @@ public record ProductoResponseDto(
         String nombre,
         BigDecimal precio_x_unidad,
         boolean activo,
-        CategoriaDto categoira,
-        TipoAlimentoDto tipoAlimento
+        CategoriaDto categoria,
+        TipoAlimentoDto tipoAlimento,
+        UnidadDto unidad
 ) {
     public ProductoResponseDto(Producto p){
         this(p.getId(),
@@ -20,6 +22,7 @@ public record ProductoResponseDto(
                 p.getPrecio_x_unidad(),
                 p.isActivo(),
                 new CategoriaDto(p.getCategoria()),
-                new TipoAlimentoDto(p.getTipoAlimento()));
+                new TipoAlimentoDto(p.getTipoAlimento()),
+                new UnidadDto(p.getUnidad()));
     }
 }
