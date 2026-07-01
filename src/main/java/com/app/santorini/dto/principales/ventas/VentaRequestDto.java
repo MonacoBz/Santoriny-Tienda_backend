@@ -8,6 +8,8 @@ public record VentaRequestDto(
         Long id,
         LocalDate fecha,
         List<VentaDRequestDto> detalles,
-        BigDecimal total
+        String tipoPago,
+        BigDecimal monto
+
 ) {
 }

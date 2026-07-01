@@ -34,13 +34,17 @@ public class VentaService implements ServiceI<VentaResponseDto, VentaRequestDto>
     }
 
     @Override
-    public void create(VentaRequestDto entity) {
-        List<VentaDetalle> detalles = obtenDetalles(entity.detalles());
+    public void create(VentaRequestDto dto) {
+        List<VentaDetalle> detalles = obtenDetalles(dto.detalles());
+
         var venta = new Venta();
         venta.agregarVentas(detalles);
+        venta.setTipoPago(dto.tipoPago());
         venta.calcularTotal();
+        venta.definePago(dto);
         detalles.forEach(d->d.setVenta(venta));
-        repository.save(venta);
+        System.out.println(venta);
+        //repository.save(venta);
     }
 
     @Override
@@ -55,6 +59,7 @@ public class VentaService implements ServiceI<VentaResponseDto, VentaRequestDto>
                 .orElseThrow(()->new VentaException("No existe la venta con el id: " + entity.id()));
         try {
             venta.setFecha(entity.fecha());
+            venta.setTipoPago(entity.tipoPago());
             venta.setDetalles(obtenDetalles(entity.detalles()));
             venta.getDetalles().forEach(d->d.setVenta(venta));
             venta.calcularTotal();
