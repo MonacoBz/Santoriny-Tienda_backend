@@ -36,15 +36,13 @@ public class VentaService implements ServiceI<VentaResponseDto, VentaRequestDto>
     @Override
     public void create(VentaRequestDto dto) {
         List<VentaDetalle> detalles = obtenDetalles(dto.detalles());
-
         var venta = new Venta();
         venta.agregarVentas(detalles);
         venta.setTipoPago(dto.tipoPago());
         venta.calcularTotal();
         venta.definePago(dto);
         detalles.forEach(d->d.setVenta(venta));
-        System.out.println(venta);
-        //repository.save(venta);
+        repository.save(venta);
     }
 
     @Override

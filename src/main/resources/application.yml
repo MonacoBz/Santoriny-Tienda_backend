@@ -1,12 +1,3 @@
 spring:
-  datasource:
-    url: jdbc:postgresql://localhost:5432/santorini
-    username: monaco
-    password: Rocobz16
-    driver-class-name: org.postgresql.Driver
-  jpa:
-    show-sql: true
-    generate-ddl: true
-    hibernate:
-      ddl-auto: update
-    open-in-view: false
+  profiles:
+    active: test

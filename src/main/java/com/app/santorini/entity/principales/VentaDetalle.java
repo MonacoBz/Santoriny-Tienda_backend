@@ -32,6 +32,10 @@ public class VentaDetalle {
     @JoinColumn(name = "id_producto")
     private Producto producto;
 
+    @ManyToOne
+    @JoinColumn(name = "id_unidad")
+    private Unidad unidad;
+
     private BigDecimal cantidad;
 
     private BigDecimal total_venta;

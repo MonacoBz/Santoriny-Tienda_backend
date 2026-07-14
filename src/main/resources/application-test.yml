@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/santorini_pruebas
+    username: monaco
+    password: Rocobz16
+    driver-class-name: org.postgresql.Driver
+  sql:
+    init:
+      mode: always
+      data-locations: classpath:db/data_catalogo.sql, classpath:db/ventas_abril.sql, classpath:db/ventas_mayo.sql,classpath:db/ventas_junio.sql,classpath:db/ventas_julio.sql
+  jpa:
+    show-sql: true
+    generate-ddl: true
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: create-drop
+    open-in-view: false
