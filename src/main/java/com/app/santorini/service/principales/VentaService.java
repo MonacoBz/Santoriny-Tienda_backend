@@ -72,7 +72,6 @@ public class VentaService implements ServiceI<VentaResponseDto, VentaRequestDto>
         var venta = repository.findById(id)
                 .orElseThrow(()->new VentaException("No existe la venta con el id : " + id));
         return new VentaResponseDto(venta);
-
     }
 
     @Override
